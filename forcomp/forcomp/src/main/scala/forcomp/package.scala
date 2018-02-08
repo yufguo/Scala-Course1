@@ -20,5 +20,13 @@ package object forcomp {
       wordstream.close()
     }
   }
+  
+  def sqrtSeq(x: Double): Stream[Double] = {
+    def improve(guess: Double) = (guess + x/guess)/2
+    val guesses: Stream[Double] = 1 #:: (Stream[Double](1,2) map improve)
+    guesses
+  }
+  
+  sqrtSeq(4).take(10).toList
 
 }
